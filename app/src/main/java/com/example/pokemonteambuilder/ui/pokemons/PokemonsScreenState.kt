@@ -1,15 +1,10 @@
 package com.example.pokemonteambuilder.ui.pokemons
 
-import com.example.pokemonteambuilder.domain.pokemonTypes.models.PokemonType
+import com.example.pokemonteambuilder.ui.common.models.PokemonUI
+
+private const val START_OFFSET = 0
 
 data class PokemonsScreenState(
-    val pokemons: List<PokemonUI> = emptyList()
-) {
-    data class PokemonUI(
-        val name: String,
-        val number: Int,
-        val imageUrl: String,
-        val firstType: PokemonType,
-        val secondType: PokemonType?
-    )
-}
+    val pokemons: List<PokemonUI> = emptyList(),
+    val offset: Int = START_OFFSET
+)

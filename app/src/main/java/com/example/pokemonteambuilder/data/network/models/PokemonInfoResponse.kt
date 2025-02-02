@@ -24,9 +24,22 @@ data class PokemonInfoResponse(
     data class Sprites(
         @SerialName("front_default")
         val frontDefault: String,
-        @SerialName("front_shiny")
-        val frontShiny: String
-    )
+        val other: Other
+    ) {
+        @Serializable
+        data class Other(
+            @SerialName("official-artwork")
+            val officialArtwork: OfficialArtwork
+        ) {
+            @Serializable
+            data class OfficialArtwork(
+                @SerialName("front_default")
+                val frontDefault: String,
+                @SerialName("front_shiny")
+                val frontShiny: String
+            )
+        }
+    }
 
     @Serializable
     data class Stat(

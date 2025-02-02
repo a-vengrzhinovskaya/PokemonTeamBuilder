@@ -13,14 +13,19 @@ class PokemonsRepositoryImpl(
     private val api: PokemonAPI,
     private val coroutineContext: CoroutineContext = Dispatchers.IO
 ) : PokemonsRepository {
+    private val pokemonsCache = mutableListOf<Pokemon>()
+
     override fun getPokemons(offset: Int, limit: Int): Flow<List<Pokemon>> = flow {
         val pokemonNames = api.getPokemons(offset, limit).results.map { it.name }
-        val pokemons = pokemonNames.map { api.getPokemonByName(it).toDomain() }
+        val pokemons =
+            pokemonNames.map { api.getPokemonByName(it).toDomain(api.getPokemonSpeciesByName(it)) }
+
+        pokemonsCache.addAll(pokemons)
         emit(pokemons)
     }.flowOn(coroutineContext)
 
-    override fun getPokemonInfo(name: String): Flow<Pokemon> = flow {
-        val pokemon = api.getPokemonByName(name).toDomain()
+    override fun getPokemonByName(name: String): Flow<Pokemon> = flow {
+        val pokemon = pokemonsCache.first { it.name == name }
         emit(pokemon)
     }.flowOn(coroutineContext)
 }

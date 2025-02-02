@@ -25,23 +25,23 @@ import coil3.request.ImageRequest
 import com.example.pokemonteambuilder.R
 import com.example.pokemonteambuilder.ui.common.components.PrimaryCard
 import com.example.pokemonteambuilder.ui.common.components.TypeItem
-import com.example.pokemonteambuilder.ui.pokemons.PokemonsScreenState
+import com.example.pokemonteambuilder.ui.common.models.PokemonUI
 import com.example.pokemonteambuilder.ui.theme.extraSmallDp
 
 @Composable
 fun PokemonItem(
-    pokemon: PokemonsScreenState.PokemonUI,
-    onPokemonClick: () -> Unit,
+    pokemon: PokemonUI,
+    onPokemonClick: (String) -> Unit,
     onAddToPartyClick: () -> Unit
 ) {
-    PrimaryCard(modifier = Modifier.clickable { onPokemonClick() }) {
+    PrimaryCard(modifier = Modifier.clickable { onPokemonClick(pokemon.name) }) {
         Row(modifier = Modifier.fillMaxWidth()) {
             SubcomposeAsyncImage(
                 modifier = Modifier
                     .size(64.dp)
                     .align(Alignment.CenterVertically),
                 model = ImageRequest.Builder(LocalContext.current)
-                    .data(pokemon.imageUrl)
+                    .data(pokemon.dexImageUrl)
                     .build(),
                 contentScale = ContentScale.Crop,
                 loading = {

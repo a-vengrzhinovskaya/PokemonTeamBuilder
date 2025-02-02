@@ -33,6 +33,7 @@ import com.example.pokemonteambuilder.ui.theme.PoisonTypeColor
 import com.example.pokemonteambuilder.ui.theme.PsychicTypeColor
 import com.example.pokemonteambuilder.ui.theme.RockTypeColor
 import com.example.pokemonteambuilder.ui.theme.SteelTypeColor
+import com.example.pokemonteambuilder.ui.theme.Typography
 import com.example.pokemonteambuilder.ui.theme.WaterTypeColor
 import com.example.pokemonteambuilder.ui.theme.extraSmallDp
 import com.example.pokemonteambuilder.ui.theme.mediumDp
@@ -97,6 +98,10 @@ fun TypeItem(type: PokemonType) {
 
         ExtraSmallSpacer()
 
-        Text(text = type.toString(), color = Color.White)
+        Text(
+            style = Typography.labelLarge,
+            text = type.toString(),
+            color = Color.White
+        )
     }
 }
