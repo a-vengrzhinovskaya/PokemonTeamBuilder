@@ -4,10 +4,13 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.systemBars
+import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.outlined.ArrowBack
 import androidx.compose.material3.Icon
@@ -34,7 +37,9 @@ fun PokemonTopBar(
         modifier = Modifier
             .fillMaxWidth()
             .background(color = Color.Transparent)
-            .padding(20.dp)
+            .padding(horizontal = 12.dp)
+            .padding(top = 8.dp)
+            .windowInsetsPadding(WindowInsets.systemBars)
             .then(modifier),
         verticalAlignment = Alignment.CenterVertically
     ) {

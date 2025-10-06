@@ -21,18 +21,11 @@ class PokemonsViewModel(
             ).collectLatest { pokemons ->
                 _state.update {
                     it.copy(
-                        pokemons = pokemons.map { pokemon -> pokemon.toPokemonUI() }
+                        pokemons = pokemons.map { pokemon -> pokemon.toPokemonUI() },
+                        isLoading = false
                     )
                 }
             }
         }
-    }
-
-    fun onPokemonClick() {
-        TODO("Not yet implemented")
-    }
-
-    fun onAddToPartyClick() {
-        TODO("Not yet implemented")
     }
 }

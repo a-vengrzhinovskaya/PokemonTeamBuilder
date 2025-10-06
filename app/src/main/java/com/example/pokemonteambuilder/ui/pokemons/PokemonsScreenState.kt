@@ -6,5 +6,6 @@ private const val START_OFFSET = 0
 
 data class PokemonsScreenState(
     val pokemons: List<PokemonUI> = emptyList(),
-    val offset: Int = START_OFFSET
+    val offset: Int = START_OFFSET,
+    val isLoading: Boolean = true
 )
